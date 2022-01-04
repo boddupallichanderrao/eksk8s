@@ -1,0 +1,39 @@
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+# Configure the AWS Provider
+provider "aws" {
+  region = "ap-south-1"
+  #access_key = "my-access-key"
+  #secret_key = "my-secret-key"
+}
+resource "aws_s3_bucket" "new_bucket_create" {
+  bucket = "eksclusterdata"
+  acl    = "private"
+
+  tags = {
+    Name        = "eksclusterdata"
+    Environment = "Dev"
+  }
+}
+resource "aws_s3_bucket_object" "object" {
+  bucket = "eksclusterdata"
+  for_each = fileset("new3/", "*")
+  key = each.value
+  source = "eks_cluster/${each.value}"
+  etag = filemd5("eks_cluster/${each.value}")
+  #key    = "file.txt"
+  #source = "new3/file.txt"
+
+  # The filemd5() function is available in Terraform 0.11.12 and later
+  # For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
+  # etag = "${md5(file("path/to/file"))}"
+  #etag = filemd5("new3/file.txt")
+}
