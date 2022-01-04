@@ -1,0 +1,40 @@
+version control
+git=> is softwere application
+
+GitHub
+Gitlab
+BitBucket
+Azure Devops Repo
+
+>download git www.git-scm.com
+>git buy --microsoft
+>git init    (initialized an existing directory git repository)
+>git status  display untracked or trackerded files
+>git add <filename> , git add . --->(.) all files adding present working dir  
+>git commit -m "inital commit"  ---> commit your staged content
+>exmple: git commit -m "added aws creds"  adding aws credentals massage
+>git log   --->display list of commits id's and time
+>git remote -v   ---->list of all remote repositories that are currently connected to your local repository
+>adding new repository in remote (github) machine
+>git remote add add origin <url remote repo>
+>git remote -v  -->adding list of all remote repositories that are currently
+origin  https://test@github.com/test/example.git (fetch)
+origin  https://test@github.com/test/example.git (push)
+>git log --oneline  --> list of all commit id's 7digts(short id's) and commit massages
+>git push -u origin master  -->pushing local content to GitHub master branch
+> git init
+  177  git status
+  178  git add .
+  179  git commit -m "first commit"
+  180  git log
+  181  git log --oneline
+  182  git remote -v
+  183  git branch -M master
+  184  git remote add origin https://github.com/boddupallichanderrao/eksk8s.git
+  185  git remote -v
+  186  git push -u origin master
+>
+>
+>
+>
+>
